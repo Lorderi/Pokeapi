@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/pokeFragment">
+
+    <fragment
+        android:id="@+id/pokeFragment"
+        android:name="ru.lorderi.pokeapi.fragment.PokeFragment"
+        android:label="fragment_poke"
+        tools:layout="@layout/fragment_poke">
+        <action
+            android:id="@+id/action_pokeFragment_to_pokeDescriptionFragment"
+            app:destination="@id/pokeDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokeDescriptionFragment"
+        android:name="ru.lorderi.pokeapi.fragment.PokeDescriptionFragment"
+        android:label="fragment_poke_description"
+        tools:layout="@layout/fragment_poke_description" />
+</navigation>
