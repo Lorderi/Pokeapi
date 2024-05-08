@@ -1,10 +1,12 @@
 package ru.lorderi.pokeapi.pokeapi
 
+import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.lorderi.pokeapi.model.response.Pokemon
+import ru.lorderi.pokeapi.model.response.PokemonDescription
 import ru.lorderi.pokeapi.model.response.PokemonList
+import ru.lorderi.pokeapi.pokeapi.factory.PokeApiFactory
 
 interface PokeApi {
     @GET("pokemon")
@@ -13,11 +15,18 @@ interface PokeApi {
         @Query("offset") offset: Int
     ): PokemonList
 
-    @GET("pokemon?limit=1118")
+    //1118
+    @GET("pokemon?limit=10")
     suspend fun getAllPokemonList(): PokemonList
 
     @GET("pokemon/{name}")
     suspend fun getPokemonDescription(
         @Path("name") name: String
-    ): Pokemon
+    ): PokemonDescription
+
+    companion object {
+        val INSTANCE: PokeApi by lazy {
+            PokeApiFactory.INSTANCE.create()
+        }
+    }
 }
