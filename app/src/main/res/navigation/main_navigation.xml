@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/pokeFragment"
-        android:name="ru.lorderi.pokeapi.fragment.PokeFragment"
+        android:name="ru.lorderi.pokeapi.ui.fragment.PokeFragment"
         android:label="fragment_poke"
         tools:layout="@layout/fragment_poke">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/pokeDescriptionFragment"
-        android:name="ru.lorderi.pokeapi.fragment.PokeDescriptionFragment"
+        android:name="ru.lorderi.pokeapi.ui.fragment.PokeDescriptionFragment"
         android:label="fragment_poke_description"
         tools:layout="@layout/fragment_poke_description" />
 </navigation>

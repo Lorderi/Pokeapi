@@ -4,5 +4,5 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="ru.lorderi.pokeapi.fragment.ToolbarFragment"
-    tools:context=".fragment.ToolbarFragment" />
+    android:name="ru.lorderi.pokeapi.ui.fragment.ToolbarFragment"
+    tools:context=".ui.fragment.ToolbarFragment" />
