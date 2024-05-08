@@ -6,18 +6,22 @@ import ru.lorderi.pokeapi.model.response.PokemonList
 data class PokemonUi(
     val id: Int,
     val name: String,
-    val url: String,
+    val img: String,
 )
+
+private const val URL_RAW =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
 
 fun PokemonList.toPokemonUiList(): List<PokemonUi> {
 
     val pokemonUiList = this.pokemons.map { pokemon ->
         val arrayUrl = pokemon.url.split("/")
+        val id = arrayUrl[arrayUrl.size - 2].toInt()
         with(pokemon) {
             PokemonUi(
-                id = arrayUrl[arrayUrl.size - 2].toInt(),
+                id = id,
                 name = name,
-                url = url,
+                img = "$URL_RAW$id.png",
             )
         }
     }

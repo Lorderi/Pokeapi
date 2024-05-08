@@ -11,6 +11,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.lorderi.pokeapi.R
@@ -64,6 +65,7 @@ class PokeDescriptionFragment : Fragment() {
         binding: FragmentPokeDescriptionBinding,
         pokemonUiDescription: PokemonUiDescription
     ) {
+        binding.name.text = pokemonUiDescription.name
         binding.avatar.setImageResource(R.drawable.ic_launcher_background)
         binding.hp.text = pokemonUiDescription.hp.toString()
         binding.attack.text = pokemonUiDescription.attack.toString()
@@ -74,7 +76,9 @@ class PokeDescriptionFragment : Fragment() {
         binding.types.text = pokemonUiDescription.types.toString()
         binding.weight.text = pokemonUiDescription.weight.toString()
         binding.height.text = pokemonUiDescription.height.toString()
+        Glide.with(binding.avatar)
+            .load(pokemonUiDescription.img)
+            .into(binding.avatar)
     }
-
 
 }
