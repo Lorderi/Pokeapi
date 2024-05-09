@@ -4,11 +4,11 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
+import ru.lorderi.pokeapi.util.Constants.BASE_URL
 
 object PokeApiFactory {
     private val contentType = "application/json".toMediaType()
     private val json = Json { ignoreUnknownKeys = true }
-    private const val BASE_URL = "https://pokeapi.co/api/v2/"
 
     val INSTANCE by lazy {
         Retrofit.Builder()

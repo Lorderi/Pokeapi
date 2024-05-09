@@ -12,9 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.bumptech.glide.Glide
+import com.google.android.material.chip.Chip
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import ru.lorderi.pokeapi.R
 import ru.lorderi.pokeapi.databinding.FragmentPokeDescriptionBinding
 import ru.lorderi.pokeapi.model.ui.PokemonUiDescription
 import ru.lorderi.pokeapi.pokeapi.PokeApi
@@ -52,8 +52,10 @@ class PokeDescriptionFragment : Fragment() {
 
         pokeViewModel.state
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
-            .onEach {
-                bindDescription(binding, it)
+            .onEach { pokemonUiDescription ->
+                if (pokemonUiDescription != null) {
+                    bindDescription(binding, pokemonUiDescription)
+                }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
@@ -65,20 +67,27 @@ class PokeDescriptionFragment : Fragment() {
         binding: FragmentPokeDescriptionBinding,
         pokemonUiDescription: PokemonUiDescription
     ) {
-        binding.name.text = pokemonUiDescription.name
-        binding.avatar.setImageResource(R.drawable.ic_launcher_background)
-        binding.hp.text = pokemonUiDescription.hp.toString()
-        binding.attack.text = pokemonUiDescription.attack.toString()
-        binding.defense.text = pokemonUiDescription.defense.toString()
-        binding.specialAttack.text = pokemonUiDescription.specialAttack.toString()
-        binding.specialDefense.text = pokemonUiDescription.specialDefense.toString()
-        binding.speed.text = pokemonUiDescription.speed.toString()
-        binding.types.text = pokemonUiDescription.types.toString()
-        binding.weight.text = pokemonUiDescription.weight.toString()
-        binding.height.text = pokemonUiDescription.height.toString()
         Glide.with(binding.avatar)
             .load(pokemonUiDescription.img)
             .into(binding.avatar)
-    }
 
+        binding.name.text = pokemonUiDescription.name
+
+        "${pokemonUiDescription.weight} KG".also { binding.weight.text = it }
+        "${pokemonUiDescription.height} M".also { binding.height.text = it }
+
+        binding.hp.setProgress(pokemonUiDescription.hp, true)
+        binding.attack.setProgress(pokemonUiDescription.attack, true)
+        binding.defense.setProgress(pokemonUiDescription.defense, true)
+        binding.specialAttack.setProgress(pokemonUiDescription.specialAttack, true)
+        binding.specialDefense.setProgress(pokemonUiDescription.specialDefense, true)
+        binding.speed.setProgress(pokemonUiDescription.speed, true)
+//        binding.types.setProgress(pokemonUiDescription.hp, true)
+        pokemonUiDescription.types.forEach {
+            val typeView = Chip(requireContext())
+            typeView.isClickable = false
+            typeView.text = it
+            binding.types.addView(typeView)
+        }
+    }
 }

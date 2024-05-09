@@ -11,7 +11,7 @@ import ru.lorderi.pokeapi.model.ui.toPokemonUiDescription
 import ru.lorderi.pokeapi.repository.Repository
 
 class PokeDescriptionViewModel(private val repository: Repository) : ViewModel() {
-    private val _state = MutableStateFlow(PokemonUiDescription())
+    private val _state: MutableStateFlow<PokemonUiDescription?> = MutableStateFlow(null)
     val state = _state.asStateFlow()
     fun loadPokemon(name: String) {
         viewModelScope.launch {

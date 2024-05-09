@@ -5,18 +5,18 @@ import ru.lorderi.pokeapi.model.response.Types
 import java.util.Locale
 
 data class PokemonUiDescription(
-    val id: String = "",
-    val name: String = "",
-    val img: String = "",
-    val hp: Int = 0,
-    val attack: Int = 0,
-    val defense: Int = 0,
-    val specialAttack: Int = 0,
-    val specialDefense: Int = 0,
-    val speed: Int = 0,
-    val types: List<String> = emptyList(),
-    val weight: Double = 0.0,
-    val height: Double = 0.0
+    val id: String,
+    val name: String,
+    val img: String,
+    val hp: Int,
+    val attack: Int,
+    val defense: Int,
+    val specialAttack: Int,
+    val specialDefense: Int,
+    val speed: Int,
+    val types: List<String>,
+    val weight: Double,
+    val height: Double
 )
 
 fun PokemonDescription.toPokemonUiDescription(): PokemonUiDescription {

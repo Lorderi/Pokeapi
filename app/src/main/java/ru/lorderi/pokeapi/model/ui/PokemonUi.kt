@@ -1,6 +1,7 @@
 package ru.lorderi.pokeapi.model.ui
 
 import ru.lorderi.pokeapi.model.response.PokemonList
+import ru.lorderi.pokeapi.util.Constants.AVATAR_URL_RAW
 
 
 data class PokemonUi(
@@ -8,9 +9,6 @@ data class PokemonUi(
     val name: String,
     val img: String,
 )
-
-private const val URL_RAW =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
 
 fun PokemonList.toPokemonUiList(): List<PokemonUi> {
 
@@ -21,7 +19,7 @@ fun PokemonList.toPokemonUiList(): List<PokemonUi> {
             PokemonUi(
                 id = id,
                 name = name,
-                img = "$URL_RAW$id.png",
+                img = "$AVATAR_URL_RAW$id.png",
             )
         }
     }
