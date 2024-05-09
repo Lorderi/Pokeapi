@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_poke">
         <action
             android:id="@+id/action_pokeFragment_to_pokeDescriptionFragment"
-            app:destination="@id/pokeDescriptionFragment" />
+            app:destination="@id/pokeDescriptionFragment"
+            app:enterAnim="@android:anim/slide_out_right"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/pokeDescriptionFragment"

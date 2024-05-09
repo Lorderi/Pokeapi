@@ -12,6 +12,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import kotlinx.coroutines.flow.launchIn
@@ -48,7 +49,11 @@ class PokeFragment : Fragment() {
             findNavController()
                 .navigate(
                     R.id.action_pokeFragment_to_pokeDescriptionFragment,
-                    bundleOf(DESCRIPTION_POKE_NAME to it?.name)
+                    bundleOf(DESCRIPTION_POKE_NAME to it?.name),
+                    NavOptions.Builder()
+                        .setEnterAnim(R.anim.fade_in)
+                        .setExitAnim(R.anim.fade_out)
+                        .build()
                 )
         }
 

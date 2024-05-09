@@ -21,7 +21,7 @@ class PokeViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private fun updateAvatar(url: String) {
-
+        binding.progress.isVisible = true
         Glide.with(binding.avatar)
             .load(url)
             .listener(object : RequestListener<Drawable> {

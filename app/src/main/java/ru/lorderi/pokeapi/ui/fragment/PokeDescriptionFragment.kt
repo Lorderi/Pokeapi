@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.isEmpty
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -118,11 +119,13 @@ class PokeDescriptionFragment : Fragment() {
         binding.speedValue.text =
             getString(R.string.progress_value, pokemonUiDescription.speed, binding.speed.max)
 
-        pokemonUiDescription.types.forEach {
-            val typeView = Chip(requireContext())
-            typeView.isClickable = false
-            typeView.text = it
-            binding.types.addView(typeView)
+        if (binding.types.isEmpty()) {
+            pokemonUiDescription.types.forEach {
+                val typeView = Chip(requireContext())
+                typeView.isClickable = false
+                typeView.text = it
+                binding.types.addView(typeView)
+            }
         }
     }
 
