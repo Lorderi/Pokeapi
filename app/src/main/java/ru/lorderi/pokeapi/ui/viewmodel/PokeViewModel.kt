@@ -2,32 +2,27 @@ package ru.lorderi.pokeapi.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
-import ru.lorderi.pokeapi.model.ui.toPokemonUiList
-import ru.lorderi.pokeapi.repository.Repository
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
+import kotlinx.coroutines.flow.Flow
+import ru.lorderi.pokeapi.model.ui.PokemonUi
+import ru.lorderi.pokeapi.pokeapi.PokeApi
+import ru.lorderi.pokeapi.ui.adapter.PokePagingSource
+import ru.lorderi.pokeapi.util.Constants.INITIAL_LOAD_PAGE
+import ru.lorderi.pokeapi.util.Constants.PAGE_SIZE
 
-class PokeViewModel(private val repository: Repository) : ViewModel() {
-    private val _state = MutableStateFlow(PokemonUiState())
-    val state = _state.asStateFlow()
-
-    init {
-        load()
-    }
-
-    fun load() {
-        viewModelScope.launch {
-            try {
-                val pokemons = repository.getAllPokemonList()
-                val uiPokemons = pokemons.toPokemonUiList()
-                _state.update {
-                    it.copy(pokemonList = uiPokemons)
-                }
-            } catch (e: Exception) {
-                println("ERROR WHILE LOADING POKEMONS")
-            }
-        }
+class PokeViewModel(private val pokeApi: PokeApi) : ViewModel() {
+    val pokemons: Flow<PagingData<PokemonUi>> = selectPokemons()
+    private fun selectPokemons(): Flow<PagingData<PokemonUi>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = PAGE_SIZE,
+                enablePlaceholders = false,
+                initialLoadSize = INITIAL_LOAD_PAGE
+            ),
+            pagingSourceFactory = { PokePagingSource(pokeApi) }
+        ).flow.cachedIn(viewModelScope)
     }
 }

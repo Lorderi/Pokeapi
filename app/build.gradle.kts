@@ -61,6 +61,11 @@ dependencies {
 
     implementation(libs.glide)
 
+    implementation(libs.androidx.palette.ktx)
+
+    implementation(libs.androidx.paging.runtime.ktx)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
