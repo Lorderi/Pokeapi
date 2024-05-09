@@ -14,21 +14,25 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import ru.lorderi.pokeapi.databinding.CardPokeBinding
 import ru.lorderi.pokeapi.model.ui.PokemonUi
+import ru.lorderi.pokeapi.util.replaceFirstChar
 
 class PokeViewHolder(
     private val binding: CardPokeBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private fun updateAvatar(url: String) {
+
         Glide.with(binding.avatar)
             .load(url)
             .listener(object : RequestListener<Drawable> {
+
                 override fun onLoadFailed(
                     e: GlideException?,
                     model: Any?,
                     target: Target<Drawable>,
                     isFirstResource: Boolean
                 ): Boolean {
+                    binding.progress.isVisible = true
                     return false
                 }
 
@@ -41,6 +45,7 @@ class PokeViewHolder(
                 ): Boolean {
                     val palette = Palette.from(resource.toBitmap()).generate()
                     binding.avatar.setBackgroundColor(palette.getDominantColor(Color.TRANSPARENT))
+                    binding.progress.isVisible = false
                     return false
                 }
             })
@@ -48,7 +53,9 @@ class PokeViewHolder(
     }
 
     fun bind(pokemonUi: PokemonUi) {
-        "${pokemonUi.name} No:${pokemonUi.id}".also { binding.name.text = it }
+
+        "№ ${pokemonUi.id}".also { binding.number.text = it }
+        binding.name.text = pokemonUi.name.replaceFirstChar()
         if (pokemonUi.img.isNotEmpty()) {
             binding.avatar.isVisible = true
             updateAvatar(pokemonUi.img)

@@ -13,14 +13,25 @@
         android:gravity="top|center"
         android:orientation="vertical">
 
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <ImageView
             android:id="@+id/avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/avatar"
             tools:srcCompat="@tools:sample/avatars[2]" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="№ 1" />
 
         <TextView
             android:id="@+id/name"
@@ -122,14 +133,27 @@
 
                 <com.google.android.material.progressindicator.LinearProgressIndicator
                     android:id="@+id/hp"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:max="300"
+                    android:max="399"
                     android:padding="10dp"
                     android:progress="0"
+                    app:indicatorColor="#F62626"
+                    app:trackColor="#F79B9B"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
+
+
+                <TextView
+                    android:id="@+id/hp_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="?colorOnSurfaceVariant"
+                    android:textStyle="bold"
+                    tools:text="50/300" />
+
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -148,11 +172,23 @@
                     android:id="@+id/attack"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:max="300"
+                    android:max="345"
                     android:padding="10dp"
                     android:progress="0"
+                    app:indicatorColor="#FF6600"
+                    app:trackColor="#F0B790"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
+
+                <TextView
+                    android:id="@+id/attack_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="?colorOnSurfaceVariant"
+                    android:textStyle="bold"
+                    tools:text="50/300" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -171,11 +207,23 @@
                     android:id="@+id/defense"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:max="300"
+                    android:max="396"
                     android:padding="10dp"
                     android:progress="0"
+                    app:indicatorColor="#15FA2C"
+                    app:trackColor="#ACF7B3"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
+
+                <TextView
+                    android:id="@+id/defense_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="?colorOnSurfaceVariant"
+                    android:textStyle="bold"
+                    tools:text="50/300" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -197,8 +245,20 @@
                     android:max="300"
                     android:padding="10dp"
                     android:progress="0"
+                    app:indicatorColor="#9F4D1D"
+                    app:trackColor="#F3D7C7"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
+
+                <TextView
+                    android:id="@+id/sa_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="?colorOnSurfaceVariant"
+                    android:textStyle="bold"
+                    tools:text="50/300" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -220,8 +280,20 @@
                     android:max="300"
                     android:padding="10dp"
                     android:progress="0"
+                    app:indicatorColor="#06911D"
+                    app:trackColor="#9CA59D"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
+
+                <TextView
+                    android:id="@+id/sd_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="?colorOnSurfaceVariant"
+                    android:textStyle="bold"
+                    tools:text="50/300" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
@@ -243,8 +315,20 @@
                     android:max="300"
                     android:padding="10dp"
                     android:progress="0"
+                    app:indicatorColor="#3584CA"
+                    app:trackColor="#93AEC6"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
+
+                <TextView
+                    android:id="@+id/speed_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="?colorOnSurfaceVariant"
+                    android:textStyle="bold"
+                    tools:text="50/300" />
             </com.google.android.material.card.MaterialCardView>
         </GridLayout>
 

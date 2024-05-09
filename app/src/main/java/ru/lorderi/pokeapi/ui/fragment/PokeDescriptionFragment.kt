@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -23,6 +24,7 @@ import com.bumptech.glide.request.target.Target
 import com.google.android.material.chip.Chip
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import ru.lorderi.pokeapi.R
 import ru.lorderi.pokeapi.databinding.FragmentPokeDescriptionBinding
 import ru.lorderi.pokeapi.model.ui.PokemonUiDescription
 import ru.lorderi.pokeapi.pokeapi.PokeApi
@@ -79,15 +81,42 @@ class PokeDescriptionFragment : Fragment() {
 
         binding.name.text = pokemonUiDescription.name
 
-        "${pokemonUiDescription.weight} KG".also { binding.weight.text = it }
-        "${pokemonUiDescription.height} M".also { binding.height.text = it }
+        binding.weight.text =
+            getString(R.string.weight_value, pokemonUiDescription.weight.toString())
+        binding.height.text =
+            getString(R.string.height_value, pokemonUiDescription.height.toString())
 
         binding.hp.setProgress(pokemonUiDescription.hp, true)
+        binding.hpValue.text =
+            getString(R.string.progress_value, pokemonUiDescription.hp, binding.hp.max)
+
         binding.attack.setProgress(pokemonUiDescription.attack, true)
+        binding.attackValue.text =
+            getString(R.string.progress_value, pokemonUiDescription.attack, binding.attack.max)
+
         binding.defense.setProgress(pokemonUiDescription.defense, true)
+        binding.defenseValue.text =
+            getString(R.string.progress_value, pokemonUiDescription.defense, binding.defense.max)
+
         binding.specialAttack.setProgress(pokemonUiDescription.specialAttack, true)
+        binding.saValue.text =
+            getString(
+                R.string.progress_value,
+                pokemonUiDescription.specialAttack,
+                binding.specialAttack.max
+            )
+
         binding.specialDefense.setProgress(pokemonUiDescription.specialDefense, true)
+        binding.sdValue.text =
+            getString(
+                R.string.progress_value,
+                pokemonUiDescription.specialDefense,
+                binding.specialDefense.max
+            )
+
         binding.speed.setProgress(pokemonUiDescription.speed, true)
+        binding.speedValue.text =
+            getString(R.string.progress_value, pokemonUiDescription.speed, binding.speed.max)
 
         pokemonUiDescription.types.forEach {
             val typeView = Chip(requireContext())
@@ -110,6 +139,7 @@ class PokeDescriptionFragment : Fragment() {
                     target: Target<Drawable>,
                     isFirstResource: Boolean
                 ): Boolean {
+                    binding.progress.isVisible = false
                     return false
                 }
 
@@ -120,6 +150,7 @@ class PokeDescriptionFragment : Fragment() {
                     dataSource: DataSource,
                     isFirstResource: Boolean
                 ): Boolean {
+                    binding.progress.isVisible = false
                     val palette = Palette.from(resource.toBitmap()).generate()
                     binding.avatar.setBackgroundColor(palette.getDominantColor(Color.TRANSPARENT))
                     return false

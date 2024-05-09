@@ -54,7 +54,7 @@ class PokeFragment : Fragment() {
 
         binding.list.adapter = adapter.withLoadStateFooter(PokeLoaderStateAdapter())
 
-        binding.list.addItemDecoration(OffsetDecoration(16))
+        binding.list.addItemDecoration(OffsetDecoration(2, 16, true, 0))
 
         pokeViewModel.pokemons
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)

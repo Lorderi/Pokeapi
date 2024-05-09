@@ -65,6 +65,7 @@ dependencies {
 
     implementation(libs.androidx.paging.runtime.ktx)
 
+    implementation(libs.androidx.swiperefreshlayout)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

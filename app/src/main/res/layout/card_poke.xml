@@ -7,9 +7,10 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp">
+
 
         <ImageView
             android:id="@+id/avatar"
@@ -18,11 +19,30 @@
             android:layout_marginBottom="8dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/avatar"
-            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintBottom_toTopOf="@id/number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars[2]" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatar"
+            tools:text="№ 1" />
 
         <TextView
             android:id="@+id/name"
@@ -32,8 +52,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/avatar"
+            app:layout_constraintTop_toBottomOf="@id/number"
             tools:text="Bulbasaur" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="avatar, name, number" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

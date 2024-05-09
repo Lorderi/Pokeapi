@@ -2,10 +2,10 @@ package ru.lorderi.pokeapi.model.ui
 
 import ru.lorderi.pokeapi.model.response.PokemonDescription
 import ru.lorderi.pokeapi.model.response.Types
-import java.util.Locale
+import ru.lorderi.pokeapi.util.replaceFirstChar
 
 data class PokemonUiDescription(
-    val id: String,
+    val id: Int,
     val name: String,
     val img: String,
     val hp: Int,
@@ -22,8 +22,8 @@ data class PokemonUiDescription(
 fun PokemonDescription.toPokemonUiDescription(): PokemonUiDescription {
     val pokemonUiDescription = with(this) {
         PokemonUiDescription(
-            id = "N° ${id.toString().padStart(3, '0')}",
-            name = replaceFirstChar(name),
+            id = id,
+            name = name.replaceFirstChar(),
             img = sprites.other.officialArtwork.img,
             hp = pokemonDetails[0].statValue,
             attack = pokemonDetails[1].statValue,
@@ -42,14 +42,8 @@ fun PokemonDescription.toPokemonUiDescription(): PokemonUiDescription {
 
 private fun getTypes(types: List<Types>): List<String> {
     return if (types.size > 1) {
-        listOf(replaceFirstChar(types[0].type.name), replaceFirstChar(types[1].type.name))
+        listOf(types[0].type.name.replaceFirstChar(), types[1].type.name.replaceFirstChar())
     } else {
-        listOf(replaceFirstChar(types[0].type.name))
-    }
-}
-
-private fun replaceFirstChar(t: String): String {
-    return t.replaceFirstChar {
-        if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        listOf(types[0].type.name.replaceFirstChar())
     }
 }
