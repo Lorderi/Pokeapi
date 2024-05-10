@@ -15,8 +15,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -24,18 +22,17 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.chip.Chip
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.lorderi.pokeapi.R
 import ru.lorderi.pokeapi.databinding.FragmentPokeDescriptionBinding
 import ru.lorderi.pokeapi.model.ui.PokemonUiDescription
-import ru.lorderi.pokeapi.pokeapi.PokeApi
-import ru.lorderi.pokeapi.repository.PokemonRepository
 import ru.lorderi.pokeapi.ui.viewmodel.PokeDescriptionViewModel
 import ru.lorderi.pokeapi.ui.viewmodel.ToolbarViewModel
 import ru.lorderi.pokeapi.util.toError
 
-
+@AndroidEntryPoint
 class PokeDescriptionFragment : Fragment() {
     companion object {
         const val DESCRIPTION_POKE_NAME = "DESCRIPTION_POKE_NAME"
@@ -49,13 +46,7 @@ class PokeDescriptionFragment : Fragment() {
 
         val toolbarViewModel by activityViewModels<ToolbarViewModel>()
 
-        val pokeViewModel by viewModels<PokeDescriptionViewModel> {
-            viewModelFactory {
-                initializer {
-                    PokeDescriptionViewModel(PokemonRepository(PokeApi.INSTANCE))
-                }
-            }
-        }
+        val pokeViewModel by viewModels<PokeDescriptionViewModel>()
 
         val name = arguments?.getString(DESCRIPTION_POKE_NAME)
 

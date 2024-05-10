@@ -5,11 +5,11 @@ import androidx.paging.PagingState
 import retrofit2.HttpException
 import ru.lorderi.pokeapi.model.ui.PokemonUi
 import ru.lorderi.pokeapi.model.ui.toPokemonUiList
-import ru.lorderi.pokeapi.pokeapi.PokeApi
+import ru.lorderi.pokeapi.repository.Repository
 import java.io.IOException
 
 class PokePagingSource(
-    private val pokeApi: PokeApi
+    private val repository: Repository
 ) : PagingSource<Int, PokemonUi>() {
     override fun getRefreshKey(state: PagingState<Int, PokemonUi>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -25,7 +25,7 @@ class PokePagingSource(
             val pageNumber = params.key ?: 0
 
 
-            val response = pokeApi.getPokemonList(limit = pageSize, offset = pageNumber)
+            val response = repository.getPokemonList(limit = pageSize, offset = pageNumber)
             val pokemonUi = response.toPokemonUiList()
             val nextPageNumber =
                 if (pokemonUi.isEmpty()) null else pageNumber + response.pokemons.size

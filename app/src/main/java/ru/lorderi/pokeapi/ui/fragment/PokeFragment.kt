@@ -11,16 +11,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.lorderi.pokeapi.R
 import ru.lorderi.pokeapi.databinding.FragmentPokeBinding
-import ru.lorderi.pokeapi.pokeapi.PokeApi
 import ru.lorderi.pokeapi.ui.adapter.PokeLoaderStateAdapter
 import ru.lorderi.pokeapi.ui.adapter.PokePagerAdapter
 import ru.lorderi.pokeapi.ui.fragment.PokeDescriptionFragment.Companion.DESCRIPTION_POKE_NAME
@@ -29,6 +27,7 @@ import ru.lorderi.pokeapi.ui.viewmodel.PokeViewModel
 import ru.lorderi.pokeapi.ui.viewmodel.ToolbarViewModel
 import ru.lorderi.pokeapi.util.toError
 
+@AndroidEntryPoint
 class PokeFragment : Fragment() {
 
 
@@ -43,13 +42,7 @@ class PokeFragment : Fragment() {
 
         toolbarViewModel.changeBackgroundColor(null)
 
-        val pokeViewModel by viewModels<PokeViewModel> {
-            viewModelFactory {
-                initializer {
-                    PokeViewModel(PokeApi.INSTANCE)
-                }
-            }
-        }
+        val pokeViewModel by viewModels<PokeViewModel>()
 
         val adapter = PokePagerAdapter {
             requireParentFragment()
