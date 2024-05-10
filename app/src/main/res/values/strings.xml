@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">pokeapi</string>
+    <string name="avatar">avatar</string>
+    <string name="progress_value">%d</string>
+    <string name="weight_value">%s KG</string>
+    <string name="height_value">%s M</string>
+    <string name="number">№ %s</string>
+    <string name="speed_label">Speed</string>
+    <string name="sd_label">SD</string>
+    <string name="sa_label">SA</string>
+    <string name="defense_label">Defense</string>
+    <string name="attack_label">Attack</string>
+    <string name="hp_label">HP</string>
+    <string name="stats_label">Stats</string>
+    <string name="empty_label">-</string>
+    <string name="height_label">Height</string>
+    <string name="weight_label">Weight</string>
+    <string name="retry_label">Retry</string>
 </resources>
+
