@@ -13,8 +13,10 @@
         <action
             android:id="@+id/action_pokeFragment_to_pokeDescriptionFragment"
             app:destination="@id/pokeDescriptionFragment"
-            app:enterAnim="@android:anim/slide_out_right"
-            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/pokeDescriptionFragment"

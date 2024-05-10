@@ -5,10 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alwaysDrawnWithCache="true"
-    android:animateLayoutChanges="true"
-    android:animationCache="true"
-    android:transitionName="shared_element_container"
     tools:context=".ui.fragment.PokeDescriptionFragment">
 
     <LinearLayout
@@ -24,8 +20,8 @@
 
         <ImageView
             android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:layout_marginBottom="16dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/avatar"
@@ -71,6 +67,7 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="32dp"
                 android:text="Weight"
+                android:textColor="@color/grey"
                 android:textSize="12sp" />
 
 
@@ -80,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Height"
+                android:textColor="@color/grey"
                 android:textSize="12sp" />
 
             <TextView
@@ -116,19 +114,24 @@
             android:id="@+id/base_character_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="2"
+            android:columnCount="3"
             android:orientation="horizontal"
             android:padding="32dp"
-
-            android:rowCount="2"
+            android:rowCount="6"
             android:useDefaultMargins="true">
 
             <TextView
                 android:id="@+id/hp_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HP"
-                android:textSize="12sp" />
+                android:text="HP" />
+
+            <TextView
+                android:id="@+id/hp_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                tools:text="50" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="200dp"
@@ -147,24 +150,19 @@
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
 
-
-                <TextView
-                    android:id="@+id/hp_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="?colorOnSurfaceVariant"
-                    android:textStyle="bold"
-                    tools:text="50/300" />
-
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attack"
-                android:textSize="12sp" />
+                android:text="Attack" />
+
+            <TextView
+                android:id="@+id/attack_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                tools:text="50" />
 
             <com.google.android.material.card.MaterialCardView
 
@@ -184,22 +182,20 @@
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
 
-                <TextView
-                    android:id="@+id/attack_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="?colorOnSurfaceVariant"
-                    android:textStyle="bold"
-                    tools:text="50/300" />
+
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Defense"
-                android:textSize="12sp" />
+                android:text="Defense" />
+
+            <TextView
+                android:id="@+id/defense_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                tools:text="50" />
 
             <com.google.android.material.card.MaterialCardView
 
@@ -219,22 +215,20 @@
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
 
-                <TextView
-                    android:id="@+id/defense_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="?colorOnSurfaceVariant"
-                    android:textStyle="bold"
-                    tools:text="50/300" />
+
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SpecialAttack"
-                android:textSize="12sp" />
+                android:text="SA" />
+
+            <TextView
+                android:id="@+id/sa_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                tools:text="50" />
 
             <com.google.android.material.card.MaterialCardView
 
@@ -254,22 +248,20 @@
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
 
-                <TextView
-                    android:id="@+id/sa_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="?colorOnSurfaceVariant"
-                    android:textStyle="bold"
-                    tools:text="50/300" />
+
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SpecialDefense"
-                android:textSize="12sp" />
+                android:text="SD" />
+
+            <TextView
+                android:id="@+id/sd_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                tools:text="50" />
 
             <com.google.android.material.card.MaterialCardView
 
@@ -289,22 +281,20 @@
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
 
-                <TextView
-                    android:id="@+id/sd_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="?colorOnSurfaceVariant"
-                    android:textStyle="bold"
-                    tools:text="50/300" />
+
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Speed"
-                android:textSize="12sp" />
+                android:text="Speed" />
+
+            <TextView
+                android:id="@+id/speed_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                tools:text="50" />
 
             <com.google.android.material.card.MaterialCardView
 
@@ -324,15 +314,7 @@
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
 
-                <TextView
-                    android:id="@+id/speed_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:textColor="?colorOnSurfaceVariant"
-                    android:textStyle="bold"
-                    tools:text="50/300" />
+
             </com.google.android.material.card.MaterialCardView>
         </GridLayout>
 

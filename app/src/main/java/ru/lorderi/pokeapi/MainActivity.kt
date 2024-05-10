@@ -2,6 +2,7 @@ package ru.lorderi.pokeapi
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import ru.lorderi.pokeapi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -9,5 +10,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.black)
     }
 }

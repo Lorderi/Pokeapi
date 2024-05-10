@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +26,7 @@ import ru.lorderi.pokeapi.ui.adapter.PokePagerAdapter
 import ru.lorderi.pokeapi.ui.fragment.PokeDescriptionFragment.Companion.DESCRIPTION_POKE_NAME
 import ru.lorderi.pokeapi.ui.itemdecoration.OffsetDecoration
 import ru.lorderi.pokeapi.ui.viewmodel.PokeViewModel
+import ru.lorderi.pokeapi.ui.viewmodel.ToolbarViewModel
 
 class PokeFragment : Fragment() {
 
@@ -34,6 +36,11 @@ class PokeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentPokeBinding.inflate(inflater, container, false)
+
+        val toolbarViewModel by activityViewModels<ToolbarViewModel>()
+
+
+        toolbarViewModel.changeBackgroundColor(null)
 
         val pokeViewModel by viewModels<PokeViewModel> {
             viewModelFactory {
