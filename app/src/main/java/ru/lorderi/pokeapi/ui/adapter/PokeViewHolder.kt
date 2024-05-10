@@ -22,6 +22,7 @@ class PokeViewHolder(
 
     private fun updateAvatar(url: String) {
         binding.progress.isVisible = true
+        binding.progress.resumeAnimation()
         Glide.with(binding.avatar)
             .load(url)
             .listener(object : RequestListener<Drawable> {
@@ -33,6 +34,7 @@ class PokeViewHolder(
                     isFirstResource: Boolean
                 ): Boolean {
                     binding.progress.isVisible = true
+                    binding.progress.pauseAnimation()
                     return false
                 }
 
@@ -46,6 +48,7 @@ class PokeViewHolder(
                     val palette = Palette.from(resource.toBitmap()).generate()
                     binding.avatar.setBackgroundColor(palette.getDominantColor(Color.TRANSPARENT))
                     binding.progress.isVisible = false
+                    binding.progress.pauseAnimation()
                     return false
                 }
             })

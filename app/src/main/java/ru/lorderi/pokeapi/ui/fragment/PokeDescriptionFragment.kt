@@ -158,6 +158,7 @@ class PokeDescriptionFragment : Fragment() {
                     isFirstResource: Boolean
                 ): Boolean {
                     binding.progress.isVisible = false
+                    binding.progress.pauseAnimation()
                     return false
                 }
 
@@ -169,6 +170,7 @@ class PokeDescriptionFragment : Fragment() {
                     isFirstResource: Boolean
                 ): Boolean {
                     binding.progress.isVisible = false
+                    binding.progress.pauseAnimation()
                     val palette = Palette.from(resource.toBitmap()).generate()
                     val dominantOrWhite = palette.getDominantColor(Color.WHITE)
                     val dominantOrTransparent = palette.getDominantColor(Color.TRANSPARENT)
