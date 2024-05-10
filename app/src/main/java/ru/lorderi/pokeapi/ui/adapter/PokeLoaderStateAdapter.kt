@@ -58,8 +58,10 @@ class PokeLoaderStateAdapter : LoadStateAdapter<PokeLoaderStateAdapter.ItemViewH
     ) : ItemViewHolder(binding.root) {
 
         override fun bind(loadState: LoadState) {
-            require(loadState is LoadState.Error)
-            binding.errorMessage.text = loadState.error.localizedMessage
+//            require(loadState is LoadState.Error)
+            if (loadState is LoadState.Error) {
+                binding.errorMessage.text = loadState.error.localizedMessage
+            }
         }
 
         companion object {
