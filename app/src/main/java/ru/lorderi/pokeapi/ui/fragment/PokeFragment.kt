@@ -27,6 +27,7 @@ import ru.lorderi.pokeapi.ui.fragment.PokeDescriptionFragment.Companion.DESCRIPT
 import ru.lorderi.pokeapi.ui.itemdecoration.OffsetDecoration
 import ru.lorderi.pokeapi.ui.viewmodel.PokeViewModel
 import ru.lorderi.pokeapi.ui.viewmodel.ToolbarViewModel
+import ru.lorderi.pokeapi.util.toError
 
 class PokeFragment : Fragment() {
 
@@ -75,11 +76,30 @@ class PokeFragment : Fragment() {
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
-        adapter.refresh()
+        binding.retry.setOnClickListener {
+            adapter.retry()
+        }
 
-        adapter.addLoadStateListener { state ->
-            binding.list.isVisible = state.refresh != LoadState.Loading
-            binding.progress.isVisible = state.refresh == LoadState.Loading
+        adapter.addLoadStateListener { loadState ->
+            with(binding) {
+                val errorState = when {
+                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                    loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                    else -> null
+                }
+
+
+                list.isVisible = loadState.refresh != LoadState.Loading
+                progress.isVisible = loadState.refresh == LoadState.Loading
+                binding.errorArea.isVisible = errorState != null
+
+                errorState?.let {
+                    binding.errorArea.isVisible = true
+//                    binding.list.isVisible = false
+                    binding.errorText.text = it.error.toError()
+                }
+            }
         }
 
         return binding.root

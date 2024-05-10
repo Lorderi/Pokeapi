@@ -33,6 +33,7 @@ import ru.lorderi.pokeapi.pokeapi.PokeApi
 import ru.lorderi.pokeapi.repository.PokemonRepository
 import ru.lorderi.pokeapi.ui.viewmodel.PokeDescriptionViewModel
 import ru.lorderi.pokeapi.ui.viewmodel.ToolbarViewModel
+import ru.lorderi.pokeapi.util.toError
 
 
 class PokeDescriptionFragment : Fragment() {
@@ -66,9 +67,24 @@ class PokeDescriptionFragment : Fragment() {
 
         pokeViewModel.state
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
-            .onEach { pokemonUiDescription ->
-                if (pokemonUiDescription != null) {
+            .onEach { state ->
+                val pokemonUiDescription = state.pokemonUiDescription
+
+                pokemonUiDescription?.let {
                     bindDescription(binding, pokemonUiDescription, toolbarViewModel)
+                }
+
+                binding.progress.isVisible = state.isRefresh()
+
+                binding.avatar.isVisible = state.isError() == null
+
+                state.isError()?.let {
+                    Toast.makeText(
+                        requireContext(),
+                        "Loading Error: ${it.toError()}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    pokeViewModel.consumeError()
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

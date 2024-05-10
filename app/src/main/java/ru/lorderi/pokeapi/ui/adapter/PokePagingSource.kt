@@ -2,17 +2,20 @@ package ru.lorderi.pokeapi.ui.adapter
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import retrofit2.HttpException
 import ru.lorderi.pokeapi.model.ui.PokemonUi
 import ru.lorderi.pokeapi.model.ui.toPokemonUiList
 import ru.lorderi.pokeapi.pokeapi.PokeApi
+import java.io.IOException
 
 class PokePagingSource(
     private val pokeApi: PokeApi
 ) : PagingSource<Int, PokemonUi>() {
     override fun getRefreshKey(state: PagingState<Int, PokemonUi>): Int? {
-        val anchorPosition = state.anchorPosition ?: return null
-        val anchorPage = state.closestPageToPosition(anchorPosition) ?: return null
-        return anchorPage.prevKey?.plus(1) ?: anchorPage.nextKey?.minus(1)
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+        }
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonUi> {
@@ -28,8 +31,12 @@ class PokePagingSource(
                 if (pokemonUi.isEmpty()) null else pageNumber + response.pokemons.size
             val prevPageNumber = if (pageNumber > 1) pageNumber - response.pokemons.size else null
             LoadResult.Page(pokemonUi, prevPageNumber, nextPageNumber)
-        } catch (e: Exception) {
-            LoadResult.Error(e)
+        } catch (exception: IOException) {
+            LoadResult.Error(exception)
+        } catch (exception: HttpException) {
+            LoadResult.Error(exception)
+        } catch (exception: Exception) {
+            LoadResult.Error(exception)
         }
     }
 }

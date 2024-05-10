@@ -37,19 +37,18 @@ class ToolbarFragment : Fragment() {
 
         val window = requireActivity().window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        val defaultToolbarColor = binding.toolbar.solidColor
+        val defaultToolbarColor = R.color.poko //binding.toolbar.solidColor
         val defaultAppBarColor = window.statusBarColor
 
         toolbarViewModel.color
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { color ->
-                val backgroundColor = color.backgroundColor
-                if (backgroundColor == null) {
-                    binding.toolbar.setBackgroundColor(defaultToolbarColor)
+                if (color == null) {
+                    binding.toolbar.setBackgroundResource(defaultToolbarColor)
                     window.statusBarColor = defaultAppBarColor
                 } else {
-                    binding.toolbar.setBackgroundColor(backgroundColor)
-                    window.statusBarColor = backgroundColor
+                    binding.toolbar.setBackgroundColor(color)
+                    window.statusBarColor = color
                 }
 
             }

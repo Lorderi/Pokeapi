@@ -13,10 +13,18 @@
         android:gravity="top|center"
         android:orientation="vertical">
 
-        <ProgressBar
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/progress"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content" />-->
+
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/poko" />
 
         <ImageView
             android:id="@+id/avatar"
@@ -66,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginEnd="32dp"
-                android:text="Weight"
+                android:text="@string/weight_label"
                 android:textColor="@color/grey"
                 android:textSize="12sp" />
 
@@ -76,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Height"
+                android:text="@string/height_label"
                 android:textColor="@color/grey"
                 android:textSize="12sp" />
 
@@ -87,7 +95,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                android:text="-"
+                android:text="@string/empty_label"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -96,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:text="-"
+                android:text="@string/empty_label"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </GridLayout>
 
@@ -106,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Stats"
+            android:text="@string/stats_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
@@ -124,7 +132,7 @@
                 android:id="@+id/hp_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HP" />
+                android:text="@string/hp_label" />
 
             <TextView
                 android:id="@+id/hp_value"
@@ -155,7 +163,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attack" />
+                android:text="@string/attack_label" />
 
             <TextView
                 android:id="@+id/attack_value"
@@ -188,7 +196,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Defense" />
+                android:text="@string/defense_label" />
 
             <TextView
                 android:id="@+id/defense_value"
@@ -221,7 +229,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SA" />
+                android:text="@string/sa_label" />
 
             <TextView
                 android:id="@+id/sa_value"
@@ -254,7 +262,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SD" />
+                android:text="@string/sd_label" />
 
             <TextView
                 android:id="@+id/sd_value"
@@ -287,7 +295,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Speed" />
+                android:text="@string/speed_label" />
 
             <TextView
                 android:id="@+id/speed_value"
