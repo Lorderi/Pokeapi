@@ -12,9 +12,14 @@ Implements of 2 screens displaying Pokemon:
 - Kotlin
 - ViewModel
 - ViewBinding
+- Navigation
 - OkHttp 3+ Retrofit 2 and Coroutines.
 - Paging 3
 - Dagger Hilt
+
+## Preview
+
+<img src="previews/preview.gif" alt="Preview" width="300">
 
 ## Main screen
 
@@ -23,7 +28,3 @@ Implements of 2 screens displaying Pokemon:
 ## Details screen
 
 <img src="previews/screen_description.png" alt="Description" width="300">
-
-## Preview
-
-<img src="previews/preview.gif" alt="Preview" width="300">
