@@ -7,8 +7,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progress"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/spinner_spacing"
+        android:layout_height="@dimen/spinner_spacing"
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"

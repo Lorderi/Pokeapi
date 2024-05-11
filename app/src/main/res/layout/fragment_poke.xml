@@ -27,7 +27,7 @@
         android:id="@+id/error_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/common_spacing"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@id/retry"
@@ -55,20 +55,10 @@
         android:visibility="gone"
         app:constraint_referenced_ids="retry, error_text" />
 
-    <!--    <ProgressBar-->
-    <!--        android:id="@+id/progress"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progress"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="@dimen/spinner_spacing"
+        android:layout_height="@dimen/spinner_spacing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

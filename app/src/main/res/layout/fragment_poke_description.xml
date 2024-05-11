@@ -13,15 +13,10 @@
         android:gravity="top|center"
         android:orientation="vertical">
 
-        <!--        <ProgressBar-->
-        <!--            android:id="@+id/progress"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content" />-->
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/progress"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/spinner_spacing"
+            android:layout_height="@dimen/spinner_spacing"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/poko" />
@@ -30,7 +25,7 @@
             android:id="@+id/avatar"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/common_spacing"
             android:adjustViewBounds="true"
             android:contentDescription="@string/avatar"
             tools:srcCompat="@tools:sample/avatars[2]" />
@@ -45,7 +40,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/common_spacing"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             tools:text="Bulbasaur" />
 
@@ -53,7 +48,7 @@
             android:id="@+id/types"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/common_spacing"
             android:orientation="horizontal"
             android:rowCount="1"
             android:useDefaultMargins="true" />
@@ -73,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="@dimen/bigger_spacing"
                 android:text="@string/weight_label"
                 android:textColor="@color/grey"
                 android:textSize="12sp" />
@@ -94,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="@dimen/bigger_spacing"
                 android:text="@string/empty_label"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -113,7 +108,7 @@
             android:id="@+id/stats_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/common_spacing"
             android:text="@string/stats_label"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -124,7 +119,7 @@
             android:layout_height="wrap_content"
             android:columnCount="3"
             android:orientation="horizontal"
-            android:padding="32dp"
+            android:padding="@dimen/bigger_spacing"
             android:rowCount="6"
             android:useDefaultMargins="true">
 
@@ -218,7 +213,7 @@
                     android:max="396"
                     android:padding="10dp"
                     android:progress="0"
-                    app:indicatorColor="#15FA2C"
+                    app:indicatorColor="#1CAA2A"
                     app:trackColor="#ACF7B3"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />
@@ -284,7 +279,7 @@
                     android:max="300"
                     android:padding="10dp"
                     android:progress="0"
-                    app:indicatorColor="#06911D"
+                    app:indicatorColor="#17932B"
                     app:trackColor="#9CA59D"
                     app:trackCornerRadius="100dp"
                     app:trackThickness="5dp" />

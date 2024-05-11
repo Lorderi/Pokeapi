@@ -7,9 +7,9 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="@dimen/common_spacing">
 
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -28,8 +28,8 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/progress"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/spinner_spacing"
+            android:layout_height="@dimen/spinner_spacing"
             app:layout_constraintBottom_toTopOf="@id/number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,15 +37,6 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/poko" />
-
-        <!--                <ProgressBar-->
-        <!--                    android:id="@+id/progress"-->
-        <!--                    android:layout_width="wrap_content"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    app:layout_constraintBottom_toTopOf="@id/number"-->
-        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                    app:layout_constraintStart_toStartOf="parent"-->
-        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/number"
@@ -67,12 +58,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/number"
             tools:text="Bulbasaur" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="avatar, name, number" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
