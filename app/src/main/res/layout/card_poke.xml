@@ -16,7 +16,7 @@
             android:id="@+id/avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/smaller_spacing"
             android:adjustViewBounds="true"
             android:contentDescription="@string/avatar"
             app:layout_constraintBottom_toTopOf="@id/number"
